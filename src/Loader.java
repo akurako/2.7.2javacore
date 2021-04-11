@@ -4,17 +4,16 @@ public class Loader {
 
     public static void main(String[] args) {
         int program_state = 1;
-        int leftop = 0;
-        int rightop = 0;
+        float leftop = 0;
+        float rightop = 0;
         char action = 0;
         Scanner in = new Scanner(System.in);
         while (program_state >= 1) {
             System.out.println("Vvedite pervoe chislo");
-            leftop = leftop + in.nextInt();
+            leftop += in.nextInt();
             program_state = 2;
 
             while (program_state == 2) {
-
                 System.out.println("Chto budem delatj? +,-,*,/,c,q");
                 action = in.next().charAt(0);
 
@@ -39,7 +38,12 @@ public class Loader {
                                 System.out.println(leftop = leftop - rightop);
                                 break;
                             case '/':
-                                System.out.println(leftop = leftop / rightop);
+                                if (rightop == 0) {
+                                    System.out.println("Delitj na 0 nelzja!");
+                                }
+                                else {
+                                    System.out.println(leftop = leftop / rightop);
+                                }
                                 break;
                             case '*':
                                 System.out.println(leftop = leftop * rightop);
